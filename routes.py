@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # --------------------------------//DB connection || START
 server = 'mssql'
-database = 'DB_NAME'
+database = 'Navin'
 username = 'SA'
 password= 'setSt1234'
 driver= '{ODBC Driver 17 for SQL Server}'
@@ -40,15 +40,15 @@ def data():
     # sorting
     i = 0
     while True:
-        col_index = args.get(f'order[{i}][column]')
+        col_index = args['order'][i]['column'] if i < len(args['order']) else None
         if col_index is None:
             break
 
-        col_name = args.get(f'columns[{col_index}][data]')
+        col_name = args['columns'][i]['data']
         if col_name not in search_column:
             col_name = 'name'
 
-        descending = args.get(f'order[{i}][dir]') == 'desc'
+        descending = args['order'][i]['dir'] == 'desc'
 
         if descending:
             table_data = sorted(table_data, key=lambda k: k[col_name], reverse=True)
