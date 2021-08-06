@@ -2,8 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import pyodbc, pdb, json
 from urllib.parse import unquote
 
-from operator import itemgetter
-
 app = Flask(__name__)
 
 # --------------------------------//DB connection || START
