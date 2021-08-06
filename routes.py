@@ -56,7 +56,6 @@ def data():
             else:
                 table_data = sorted(table_data, key=lambda k: int(k[col_name]))
         else:
-            print(col_name)
             if args['order'][i]['dir'] == 'desc':
                 table_data = sorted(table_data, key=lambda k: k[col_name], reverse=True)
             else:
