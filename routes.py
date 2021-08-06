@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import pyodbc, pdb, json
 from urllib.parse import unquote
 
+from operator import itemgetter
+
 app = Flask(__name__)
 
 # --------------------------------//DB connection || START
@@ -44,17 +46,21 @@ def data():
         if col_index is None:
             break
 
-        col_name = args['columns'][i]['data']
+        col_name = args['columns'][col_index]['data']
         if col_name not in search_column:
             col_name = 'name'
 
-        descending = args['order'][i]['dir'] == 'desc'
-
-        if descending:
-            table_data = sorted(table_data, key=lambda k: k[col_name], reverse=True)
+        if  col_name == 'age':
+            if args['order'][i]['dir'] == 'desc':
+                table_data = sorted(table_data, key=lambda k: int(k[col_name]), reverse=True)
+            else:
+                table_data = sorted(table_data, key=lambda k: int(k[col_name]))
         else:
-            table_data = sorted(table_data, key=lambda k: k[col_name])
-
+            print(col_name)
+            if args['order'][i]['dir'] == 'desc':
+                table_data = sorted(table_data, key=lambda k: k[col_name], reverse=True)
+            else:
+                table_data = sorted(table_data, key=lambda k: k[col_name])
         i += 1
 
     # pagination
@@ -74,4 +80,4 @@ def data():
     return jsonify(res)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
