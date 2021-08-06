@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import pyodbc, pdb, json
 from urllib.parse import unquote
+from itertools import groupby
 
 app = Flask(__name__)
 
@@ -15,6 +16,9 @@ cursor = db_cnx.cursor()
 cursor.fast_executemany = True
 sql_query = "select name, age, address, phone, email from Navin.dbo.Persons"
 # --------------------------------//DB connection || END
+
+def keyfunc(s):
+    return [int(''.join(g)) if k else ''.join(g) for k, g in groupby('\0'+s, str.isdigit)]
 
 @app.route('/')
 def index():
