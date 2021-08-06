@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import pyodbc, pdb, json
 from urllib.parse import unquote
-from itertools import groupby
 
 app = Flask(__name__)
 
