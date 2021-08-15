@@ -88,7 +88,7 @@ def data():
 
     return jsonify(res)
 
-@app.route('/api/tree_data', methods=['GET'])
+@app.route('/api/tree_data', methods=['POST'])
 def tree_data():
     res = [{
             "ID": 1,

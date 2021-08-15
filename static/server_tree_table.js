@@ -1,6 +1,14 @@
 $(function(){
     var dataGrid = $("#gridContainer").dxDataGrid({
-        dataSource: "/api/tree_data",
+        dataSource: new DevExpress.data.DataSource({
+            load: function(values) {
+                return $.ajax({
+                    url: "/api/tree_data",
+                    method: "POST",
+                    data: values
+                })
+            },
+        }),
         keyExpr: "ID",
         allowColumnReordering: true,
         showBorders: true,
@@ -36,3 +44,5 @@ $(function(){
         }
     });
 });
+
+
