@@ -1,6 +1,6 @@
 $(function(){
     var dataGrid = $("#gridContainer").dxDataGrid({
-        dataSource: customers,
+        dataSource: "/api/tree_data",
         keyExpr: "ID",
         allowColumnReordering: true,
         showBorders: true,
