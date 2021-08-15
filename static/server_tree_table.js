@@ -11,6 +11,9 @@ $(function(){
         }),
         keyExpr: "ID",
         allowColumnReordering: true,
+        highlightSearchText: true,
+        headerFilter: { visible: true },
+        filterPanel: { visible: true },
         showBorders: true,
         grouping: {
             autoExpandAll: false,
