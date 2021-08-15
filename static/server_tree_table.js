@@ -12,21 +12,34 @@ $(function(){
         keyExpr: "ID",
         allowColumnReordering: true,
         highlightSearchText: true,
+
+        //Filter
         headerFilter: { visible: true },
         filterPanel: { visible: true },
-        showBorders: true,
-        grouping: {
-            autoExpandAll: false,
+
+        // pagination
+        paging: {
+            pageSize: 10
         },
+
+        // Focus row
+        focusedRowEnabled: true,
+        focusedRowIndex: 0,
+        focusedColumnIndex: 0,
+
         searchPanel: {
             visible: true
         },
-        paging: {
-            pageSize: 10
-        },  
+
+        showBorders: true,
+
+        grouping: {
+            autoExpandAll: false,
+        },
         groupPanel: {
             visible: true
         },
+        
         columns: [
             "CompanyName",
             "Phone",
