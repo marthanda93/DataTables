@@ -20,8 +20,17 @@ def keyfunc(s):
     return [int(''.join(g)) if k else ''.join(g) for k, g in groupby('\0'+s, str.isdigit)]
 
 @app.route('/')
+@app.route('/index.html')
 def index():
+    return render_template('index.html', the_title='Tiger Home Page')
+
+@app.route('/server_table')
+def server_table():
     return render_template('server_table.html', title='Server-Driven Table')
+
+@app.route('/server_tree_table')
+def server_tree_table():
+    return render_template('server_tree_table.html', title='Server-Driven Table')
 
 @app.route('/api/data', methods=['POST'])
 def data():
