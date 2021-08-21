@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<body class="dx-viewport">
     <div class="demo-container">
         <div id="gridContainer"></div>
         <div class="options">
@@ -11,12 +10,11 @@
             </div>    
         </div>
     </div>
-</body>
 {% endblock %}
 
 {% block scripts %}
     <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.common.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.light.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.5/css/dx.dark.css" />
     <script src="https://cdn3.devexpress.com/jslib/21.1.5/js/dx.all.js"></script>
     <!-- <script src="{{ url_for('static', filename='server_tree_table_data.js') }}"></script> -->
     <script src="{{ url_for('static', filename='server_tree_table.js') }}"></script>

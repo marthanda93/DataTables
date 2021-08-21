@@ -43,11 +43,14 @@ def data():
 
     # search filter
     args = json.loads(request.values.get("args"))
+    print(args)
 
     search = args['search']['value']
     if search:
         table_data = [item for item in table_data for val in [v for k,v in item.items() if k in search_column] if str(search).lower() in str(val).lower()]
     total_filtered = len(table_data)
+
+    print("-----------------", request.values.get("url").split('/')[-1])
 
     # sorting
     i = 0

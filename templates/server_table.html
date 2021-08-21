@@ -36,11 +36,11 @@
                 url: '/api/data',
                 method: 'POST',
                 data: function ( args ) {
-                  return { "args": JSON.stringify( args ) };
+                  return { "args": JSON.stringify( args ), "url": window.location.href };
                 },
             },
             "search": {
-              "regex": true
+              "regex": true,
             },
             columns: [
                 {data: 'name'},
