@@ -297,6 +297,22 @@ def tree_data():
 
     return jsonify(res)
 
+@app.errorhandler(404)
+def handle_exception(err):
+    response = {"error": err.description, "message": ""}
+    if len(err.args) > 0:
+        response["message"] = err.args[0]
+
+    app.logger.error("{}: {}".format(err.description, response["message"]))
+    return jsonify(response), err.code
+
+@app.errorhandler(500)
+def handle_exception(err):
+    """Return JSON instead of HTML for any other server error"""
+    app.logger.error(f"Unknown Exception: {str(err)}")
+    app.logger.debug(''.join(traceback.format_exception(etype=type(err), value=err, tb=err.__traceback__)))
+    response = {"error": "Sorry, that error is on us, please contact support if this wasn't an accident"}
+    return jsonify(response), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
