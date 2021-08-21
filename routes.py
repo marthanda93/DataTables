@@ -304,7 +304,8 @@ def handle_exception(err):
         response["message"] = err.args[0]
 
     app.logger.error("{}: {}".format(err.description, response["message"]))
-    return jsonify(response), err.code
+    return render_template('error.html', the_title='Tiger Home Page', error=response['error'])
+    # return jsonify(response), err.code
 
 @app.errorhandler(500)
 def handle_exception(err):
