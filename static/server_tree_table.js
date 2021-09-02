@@ -22,11 +22,6 @@ $(function(){
             pageSize: 10
         },
 
-        // Focus row
-        focusedRowEnabled: true,
-        focusedRowIndex: 0,
-        focusedColumnIndex: 0,
-
         searchPanel: {
             visible: true
         },
@@ -39,17 +34,33 @@ $(function(){
         groupPanel: {
             visible: true
         },
-        
-        columns: [
-            "CompanyName",
-            "Phone",
-            "Fax",
-            "City",
-            {
-                dataField: "State",
-                groupIndex: 0
-            }
-        ]
+
+        allowColumnReordering: true,
+        allowColumnResizing: true,
+        columnAutoWidth: true,
+        columnChooser: {
+            enabled: true
+        },
+        columnFixing: { 
+            enabled: true
+        },
+
+        columns: [{ 
+            dataField: "CompanyName",
+            width: 500,
+        },{ 
+            dataField: "Phone",
+            width: 500,
+        },{ 
+            dataField: "Fax",
+            width: 500,
+        },{ 
+            dataField: "City",
+            width: 500,
+        },{
+            dataField: "State",
+            groupIndex: 0
+        }]
     }).dxDataGrid("instance");
     
     $("#autoExpand").dxCheckBox({
@@ -60,5 +71,3 @@ $(function(){
         }
     });
 });
-
-
